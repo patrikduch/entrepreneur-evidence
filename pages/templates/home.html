@@ -3,38 +3,39 @@
 
 {% block content %}
 
-<div class="container">
+{% if form %}
+    <!-- Form Errors -->
+    {% if form.errors %}
+        <ul class="errors">
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-	<h1>Enterpreneur evidence</h1>
+    <!-- Display Form -->
+    <div class="container">
+    	<h1>Enterpreneur evidence</h1>
+	    <form action="." method="POST">
+		    {% csrf_token %}
+		    {% for field in form %}
+		        <div class="form-group">
+		            <label>{{ field.label }}</label>
+		            {{ field }}
+		        </div>
+		    {% endfor %}
+	    	<button type="submit" class="btn btn-primary">Submit</button>
+	    </form>
+    </div>
+  
+{% endif %}
 
-	<form method="POST" action="{% url 'home' %}">
-		
-		{% csrf_token %}
 
-  		<div class="form-group">
-		    <label for="firstNameInput">First name</label>
-		    <input name="firstName" type="text" class="form-control" id="firstNameInput" placeholder="First Name" />
-  		</div>
 
-		<div class="form-group">
-			<label for="lastNameInput">Last name</label>
-		 	<input name="lastName" type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
-		</div>
-
-		<div class="form-group">	
-			<label for="emailInput">E-mail</label>
-		 	<input name="email" type="text" class="form-control" id="emailInput" placeholder="E-mail">
-		</div>
-
-		<div class="form-group">
-			<label for="icoInput">ICO</label>
-		 	<input name="ico" type="text" class="form-control" id="icoInput" placeholder="ICO">
-		</div>
-
-  		<button type="submit" class="btn btn-primary">Submit</button>
-	</form>
-</div>
 {% endblock %}
+
+
+
 
 
 
