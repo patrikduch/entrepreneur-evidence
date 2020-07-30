@@ -26,6 +26,7 @@ class EnterpreneurRawForm(forms.Form):
 		widget=forms.EmailInput(attrs={'class': 'form-control'}),
 	)
 	ico = forms.CharField(
+		label='IČO',
 		max_length=8,
 		widget=forms.TextInput(attrs={'class': 'form-control'}),
 	)

@@ -12,13 +12,8 @@ def home(request):
 		my_form = EnterpreneurRawForm(request.POST or None)
 
 		if my_form.is_valid():
-			print(my_form["ico"])
-
-			if AresFetcherHelper.is_ico_valid('09225471'):
-				# now that data is good
-				print("Yes")
-				print(my_form.cleaned_data)
-
+			if AresFetcherHelper.is_ico_valid(my_form.cleaned_data["ico"]): # now that data is in proper state
+				
 				#Enterpreneur.objects.create(firstName='Patrik', lastName='Duch', email='duchpatrik@icloud.com', ico='09225471')
 				Enterpreneur.objects.create(**my_form.cleaned_data)
 
