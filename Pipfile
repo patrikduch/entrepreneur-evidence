@@ -7,9 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "==3.0.4"
-django-parsley = "*"
 django-xml = "*"
-urllib3 = "*"
 requests = "*"
 
 [requires]
