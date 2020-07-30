@@ -1,3 +1,10 @@
 h1 {
 	margin-bottom: 2vh; margin-top: 2vh
 }
+
+
+.form-error-container {
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	border: 1px solid red;
+}

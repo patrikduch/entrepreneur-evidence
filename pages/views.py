@@ -1,36 +1,31 @@
 from django.shortcuts import render
 from .models import Enterpreneur
-from .forms import EnterpreneurForm, EnterpreneurRawForm
+from .forms import EnterpreneurForm
 from pages.helpers.AresFetcherHelper import AresFetcherHelper
 
 
 def home(request):	
 
-	my_form = EnterpreneurRawForm()
+	my_form = EnterpreneurForm()
 
 	if (request.method == 'POST'):
-		my_form = EnterpreneurRawForm(request.POST or None)
+		my_form = EnterpreneurForm(request.POST or None)
 
 		if my_form.is_valid():
 			if AresFetcherHelper.is_ico_valid(my_form.cleaned_data["ico"]): # now that data is in proper state
 				
-				#Enterpreneur.objects.create(firstName='Patrik', lastName='Duch', email='duchpatrik@icloud.com', ico='09225471')
-				Enterpreneur.objects.create(**my_form.cleaned_data)
-
+				my_form.save()
 
 				# Reset form credential after successfull submition
-				my_form = EnterpreneurRawForm()
-
-
+				my_form = EnterpreneurForm()
 		else:
 			print(my_form.errors)
 
 	# Add form into contect
 	context = {
-		"form": my_form
+		"form": my_form,
 	}
 
-	
 	return render(request, 'home.html', context)
 
 

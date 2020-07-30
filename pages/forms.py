@@ -1,16 +1,9 @@
 from django import forms
 from .models import  Enterpreneur
+from pages.helpers.AresFetcherHelper import AresFetcherHelper
 
 
 class EnterpreneurForm(forms.ModelForm):
-
-	class Meta:
-		model = Enterpreneur
-		fields = ['firstName', 'lastName', 'email', 'ico']
-
-
-
-class EnterpreneurRawForm(forms.Form):
 
 	firstName = forms.CharField(
 		max_length=255,
@@ -32,4 +25,18 @@ class EnterpreneurRawForm(forms.Form):
 	)
 
 
-	
+	class Meta:
+		model = Enterpreneur
+		fields = ['firstName', 'lastName', 'email', 'ico']
+
+
+	def clean_ico(self, *args, **kwargs):
+
+		ico = self.cleaned_data.get('ico')
+
+		if not AresFetcherHelper.is_ico_valid(ico):
+			raise forms.ValidationError('This is not a  valid ICO')
+
+		return ico
+
+
