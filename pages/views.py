@@ -12,11 +12,13 @@ def home(request):
 	if (request.method == 'POST'):
 		my_form = EnterpreneurRawForm(request.POST or None)
 
-		print(my_form)
-
 		if my_form.is_valid():
 			# now that data is good
-			print(my_form.cleaned_data)
+			
+			print(my_form["ico"])
+
+
+			#print(my_form.cleaned_data)
 
 			if AresFetcherHelper.is_ico_valid('09225471'):
 				print("Yes")

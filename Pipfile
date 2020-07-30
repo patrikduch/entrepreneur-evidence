@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==3.0.4"
 django-xml = "*"
 requests = "*"
+urllib3 = "==1.25.10"
 
 [requires]
 python_version = "3.8"
