@@ -1,11 +1,18 @@
 # dependencies
 django = 3.0.8 
+
 https://pypi.org/project/Django/
+
 django-xml = "2.1.0" 
+
 https://pypi.org/project/django-xml/
+
 requests = "2.7.0" 
+
 https://pypi.org/project/requests/2.7.0/
+
 urllib3 = 1.25.10  
+
 https://urllib3.readthedocs.io/en/latest/
 
 
