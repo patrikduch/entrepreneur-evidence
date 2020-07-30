@@ -13,19 +13,16 @@ def home(request):
 		my_form = EnterpreneurRawForm(request.POST or None)
 
 		if my_form.is_valid():
-			# now that data is good
-			
 			print(my_form["ico"])
-
-
 			#print(my_form.cleaned_data)
 
 			if AresFetcherHelper.is_ico_valid('09225471'):
+				# now that data is good
 				print("Yes")
 		else:
 			print(my_form.errors)
 
-	
+	# Add form into contect
 	context = {
 		"form": my_form
 	}
