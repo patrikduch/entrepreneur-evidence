@@ -1,6 +1,30 @@
 from django.shortcuts import render
 
-# Create your views here.
-def urlparser(request):	
+from .models import Task
 
-	return render(request, 'urlparser.html', {})
+
+from django.views.generic import (
+	CreateView,
+	DetailView,
+	ListView,
+	UpdateView,
+	DeleteView
+)
+
+
+
+# Create your views here.
+
+
+
+
+class GetData(ListView):
+
+	queryset = Task.objects.all() # /task/<modalname>_list.html
+
+	print(queryset)
+
+
+
+
+
