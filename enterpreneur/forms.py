@@ -1,6 +1,6 @@
 from django import forms
 from .models import  Enterpreneur
-from pages.helpers.AresFetcherHelper import AresFetcherHelper
+from enterpreneur.helpers.AresFetcherHelper import AresFetcherHelper
 
 
 class EnterpreneurForm(forms.ModelForm):
@@ -38,5 +38,3 @@ class EnterpreneurForm(forms.ModelForm):
 			raise forms.ValidationError('This is not a  valid ICO')
 
 		return ico
-
-

@@ -1,10 +1,11 @@
+
 from django.shortcuts import render
 from .models import Enterpreneur
 from .forms import EnterpreneurForm
-from pages.helpers.AresFetcherHelper import AresFetcherHelper
+from enterpreneur.helpers.AresFetcherHelper import AresFetcherHelper
 
 
-def home(request):	
+def enterpreneurs(request):	
 
 	my_form = EnterpreneurForm()
 
@@ -26,8 +27,4 @@ def home(request):
 		"form": my_form,
 	}
 
-	return render(request, 'home.html', context)
-
-
-def about(request):
-	return render(request, 'about.html', {})
+	return render(request, 'enterpreneurs.html', context)

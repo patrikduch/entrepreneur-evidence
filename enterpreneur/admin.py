@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Enterpreneur
 
-
-
 class EnterpreneurAdmin(admin.ModelAdmin):
     
     model = Enterpreneur
@@ -11,7 +9,6 @@ class EnterpreneurAdmin(admin.ModelAdmin):
         return False
 	
 
-
 # Register your models here.
-admin.site.register(Enterpreneur, EnterpreneurAdmin)
 
+admin.site.register(Enterpreneur, EnterpreneurAdmin)

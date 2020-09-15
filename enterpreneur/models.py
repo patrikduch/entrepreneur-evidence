@@ -8,5 +8,3 @@ class Enterpreneur(models.Model):
 
 	def __str__ (self):
 		return self.firstName + ' ' + self.lastName
-
-

@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages'
+
+    # own apps
+    'enterpreneur',
+    'root',
+    'urlparser'
 ]
 
 MIDDLEWARE = [

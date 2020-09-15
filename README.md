@@ -19,11 +19,17 @@ https://urllib3.readthedocs.io/en/latest/
 # install specific version
 pipenv install urllib3==1.25.10
 
+# superuser creation
+
+python manage.py createsuperuser
+
 
 # admin credentials
 admin
 duch0704
 
+# Add new app into project
+python manage.py startapp "appname"
 
 # Server startup
 python manage.py runserver 
