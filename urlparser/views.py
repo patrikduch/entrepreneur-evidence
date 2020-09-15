@@ -1,6 +1,8 @@
 from django.shortcuts import render
-
 from .models import Task
+
+from django.views import View
+from django.http import JsonResponse
 
 
 from django.views.generic import (
@@ -12,10 +14,7 @@ from django.views.generic import (
 )
 
 
-
-# Create your views here.
-
-
+from urlparser.helpers.WebsiteDataHelper import WebsiteDataHelper
 
 
 class GetData(ListView):
@@ -25,6 +24,8 @@ class GetData(ListView):
 	print(queryset)
 
 
-
-
+class ParseURLAjax(View):
+    def get(self, request):
+    	new_data = WebsiteDataHelper.process_url('a')
+    	return JsonResponse(new_data)
 
