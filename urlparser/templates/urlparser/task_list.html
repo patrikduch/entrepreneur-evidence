@@ -3,44 +3,35 @@
 
 {% block content %}
 
-
-
 <div class="container page-content-container">
     
-    <h1>Clients</h3>
+    <h1>Fetch data from URL</h3>
+
+
+    <form method="POST">
         
-    <table id="task-list" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Site name</th>
-            </tr>
-        </thead>
-        <tbody>
+        <div class="container">
 
-        	{% for instance in object_list %}
-		 		<tr>
-	                <td>{{ instance.title}}</td>
-	                <td>{{ instance.description }}</td>
-	                <td>{{ instance.siteName }}</td>
-	            </tr>
-			{% endfor %}
+          <div class="row">
+            <div class="col-md-6">
+              <label for="basic-url">Website URL</label>
+              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+          </div>
 
-        </tbody>
-    </table>
-</div>
+          <div class="row">
+            <div class="col-md-6">
+               <button type="button" class="btn btn-success">GO</button>
+            </div>
+          </div>
 
+          <br/>
+    
+          <button type="button" class="btn btn-primary">Show data</button>
 
-<script type="text/javascript">
-	
-	$(document).ready(function() { 
-		$('#task-list').dataTable(); }
-	      
-	);
-</script>
-
-
+        </div>
+            
+    </form>
 
 
 {% endblock %}
