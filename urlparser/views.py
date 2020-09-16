@@ -6,26 +6,32 @@ from django.http import JsonResponse
 
 
 from django.views.generic import (
-	CreateView,
-	DetailView,
 	ListView,
-	UpdateView,
-	DeleteView
 )
 
-
 from urlparser.helpers.WebsiteDataHelper import WebsiteDataHelper
-
+from django.http import HttpResponse
 
 class GetData(ListView):
 
-	queryset = Task.objects.all() # /task/<modalname>_list.html
+	queryset = Task.objects.values() # /task/<modalname>_list.html
 
-	print(queryset)
+	def get(self, request):
+		import json
+		result_list = list(self.queryset.values('title', 'description', 'siteName'))
+		return HttpResponse(json.dumps(result_list), content_type="application/json")
 
 
 class ParseURLAjax(View):
     def get(self, request):
     	new_data = WebsiteDataHelper.process_url('a')
     	return JsonResponse(new_data)
+
+
+def urlparser(request):	
+	return render(request, 'urlparser/task_page.html', {})
+
+
+
+
 

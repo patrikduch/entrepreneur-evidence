@@ -8,3 +8,16 @@ h1 {
 	margin-bottom: 1vh;
 	border: 1px solid red;
 }
+
+
+.table-content-hidden {
+	display: none;
+}
+
+.table-content {
+	margin-top: 5vh;
+}
+
+.search-content-btn {
+	margin-top: 1.5vh;
+}

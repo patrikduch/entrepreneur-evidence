@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %} Domů {% endblock %}
+
+{% block content %}
+
+<div class="container page-content-container">
+    
+    <h1>Fetch data from URL</h3>
+
+
+    <div class="container">
+      <form method="POST">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="basic-url">Website URL</label>
+              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 search-content-btn">
+               <button type="button" class="btn btn-success">GO</button>
+            </div>
+          </div>
+            
+    </form>
+
+    <br />
+ 
+    <button id="show-data-btn" type="button" class="btn btn-primary">Show data</button>
+
+  </div>
+
+
+  <div class="container">
+    <div id="table-area" class="table-content table-content-hidden"> 
+
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Site name</th>
+            </tr>
+        </thead>
+        <tbody id ="table-cell-content">
+           
+        </tbody>
+    </table>
+
+    </div>
+  </div>
+
+  
+    <script> 
+
+      $("#show-data-btn").click(function() {
+
+        $("#table-area tbody").empty();
+
+        $.getJSON("http://localhost:8000/urlparser/getdata/", function( data ) {
+          console.log(data);
+
+          var color = $("#table-area").css("display");
+
+          if (color == 'none') {
+            $("#table-area").css("display", "block" );
+          } else {
+            $("#table-area").css("display", "none");
+          }
+          
+  
+          var items = [];
+
+          $.each( data, function( key, val ) {
+            items.push( "<tr>" );
+            items.push( "<td>" + val.title +  "</td>" );
+            items.push( "<td>" + val.description + "</td>" );
+            items.push( "<td>" + val.siteName + "</td>" );
+            items.push( "</tr>" );
+          });
+
+          $("#table-area tbody").append(items);
+
+        });
+     
+      });
+
+    </script>
+
+
+{% endblock %}
+
+
+
+
+
+

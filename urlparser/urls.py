@@ -1,10 +1,12 @@
 from django.urls import path
 from .views import (
 	GetData,
-	ParseURLAjax
+	ParseURLAjax,
+	urlparser
 )
 
 urlpatterns = [
-    path('urlparser/', GetData.as_view(), name='urlparser'),
-    path('testik/', ParseURLAjax.as_view(), name = "ParseURLAjax")
+    path('getdata/', GetData.as_view(), name='get_data'),
+    path('', urlparser, name = 'urlparser'),
+    path('parseurlajax/', ParseURLAjax.as_view(), name = "parse_url_ajax")
 ]
