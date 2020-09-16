@@ -70,7 +70,7 @@ https://stackoverflow.com/questions/12509888/how-can-i-send-an-xml-body-using-re
 
 
 
-#OOP 
+# OOP 
 
 https://stackoverflow.com/questions/12718187/calling-class-staticmethod-within-the-class-body
 
@@ -83,3 +83,9 @@ https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResp
 https://stackoverflow.com/questions/757022/how-do-you-serialize-a-model-instance-in-django
 https://stackoverflow.com/questions/44066026/should-i-iterate-on-django-query-set-or-over-the-variable
 
+
+# POST requests
+
+https://stackoverflow.com/questions/17179919/405-method-not-allowed-for-ajax-request-with-django
+https://stackoverflow.com/questions/57948887/forbidden-csrf-cookie-not-set-paypal-django
+https://stackoverflow.com/questions/9738824/django-post-url-error

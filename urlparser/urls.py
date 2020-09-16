@@ -5,8 +5,10 @@ from .views import (
 	urlparser
 )
 
+from django.views.decorators.csrf import csrf_exempt
+
 urlpatterns = [
     path('getdata/', GetData.as_view(), name='get_data'),
     path('', urlparser, name = 'urlparser'),
-    path('parseurlajax/', ParseURLAjax.as_view(), name = "parse_url_ajax")
+    path('parseurlajax/', csrf_exempt(ParseURLAjax.as_view()), name = "parse_url_ajax")
 ]

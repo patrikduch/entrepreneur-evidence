@@ -29,7 +29,7 @@ class WebsiteDataHelper:
 
 		# Request processing
 		headers = {'Content-Type': 'application/json'} # set what your server accepts
-		response = requests.get('https://daomaker.com', headers=headers).text
+		response = requests.get(url, headers=headers).text
 
 		# HTML processing
 		soup = BeautifulSoup(response)

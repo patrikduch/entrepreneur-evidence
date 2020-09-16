@@ -7,9 +7,9 @@
     
     <h1>Fetch data from URL</h3>
 
-
     <div class="container">
-      <form method="POST">
+      <form method="POST"> {% csrf_token %}
+        {{ form }}
           <div class="row">
             <div class="col-md-6">
               <label for="basic-url">Website URL</label>
@@ -19,7 +19,7 @@
 
           <div class="row">
             <div class="col-md-6 search-content-btn">
-               <button type="button" class="btn btn-success">GO</button>
+               <button id="parse-url-btn" type="button" class="btn btn-success">GO</button>
             </div>
           </div>
             
@@ -83,6 +83,35 @@
           $("#table-area tbody").append(items);
 
         });
+     
+      });
+
+
+
+      $("#parse-url-btn").click(function() {
+
+
+          var inputUrl = $("#basic-url").val();
+
+
+          if (!inputUrl) {
+            alert("You must enter URL address.");
+          } else {
+
+            $.ajax({
+              type: "POST",
+              url: "http://localhost:8000/urlparser/parseurlajax/",
+              data: { url: inputUrl },
+              success: function(msg){
+                    alert( "Data Saved");
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+                 alert("Error occured");
+              }
+            });
+
+
+          }
      
       });
 

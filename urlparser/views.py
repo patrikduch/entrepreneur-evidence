@@ -9,6 +9,8 @@ from django.views.generic import (
 	ListView,
 )
 
+
+from django.views.decorators.csrf import csrf_exempt
 from urlparser.helpers.WebsiteDataHelper import WebsiteDataHelper
 from django.http import HttpResponse
 
@@ -23,9 +25,31 @@ class GetData(ListView):
 
 
 class ParseURLAjax(View):
-    def get(self, request):
-    	new_data = WebsiteDataHelper.process_url('a')
-    	return JsonResponse(new_data)
+	def post(self, request, *args, **kwargs):
+
+		import json
+	
+		# Parse request dat
+		url = request.POST['url']
+
+
+		# Process website url data
+		new_data = WebsiteDataHelper.process_url(url)
+
+		if (new_data['metaTitle'] is None):
+			new_data['metaTitle'] = new_data['title']
+
+
+
+		if new_data['description'] is None:
+			new_data['description'] = ''
+
+
+
+		# Save data tu database
+		Task.objects.create(description= new_data['description'], siteName=new_data['title'], title=new_data['title'], url=url);
+
+		return JsonResponse(new_data)
 
 
 def urlparser(request):	

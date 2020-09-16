@@ -34,7 +34,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    
+
+    # Third party libraries
     'corsheaders',
 
     'django.contrib.admin',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     
-
     # own apps
     'enterpreneur',
     'root',
