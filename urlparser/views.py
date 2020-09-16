@@ -20,14 +20,15 @@ class GetData(ListView):
 
 	def get(self, request):
 		import json
-		result_list = list(self.queryset.values('title', 'description', 'siteName'))
-		return HttpResponse(json.dumps(result_list), content_type="application/json")
+		result_list = list(self.queryset.values('title', 'description', 'siteName', 'url'))
+		return HttpResponse(json.dumps(result_list), content_type="application/json")	
 
 
 class ParseURLAjax(View):
 	def post(self, request, *args, **kwargs):
 
 		import json
+
 	
 		# Parse request dat
 		url = request.POST['url']
@@ -43,7 +44,6 @@ class ParseURLAjax(View):
 
 		if new_data['description'] is None:
 			new_data['description'] = ''
-
 
 
 		# Save data tu database

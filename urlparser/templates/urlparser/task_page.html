@@ -41,6 +41,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Site name</th>
+                <th>Url</th>
             </tr>
         </thead>
         <tbody id ="table-cell-content">
@@ -56,46 +57,41 @@
 
       $("#show-data-btn").click(function() {
 
-        $("#table-area tbody").empty();
+        var table = $('#example').DataTable();
+        table.clear().destroy();
 
-        $.getJSON("http://localhost:8000/urlparser/getdata/", function( data ) {
-          console.log(data);
+        var tablevisibility = $("#table-area").css("display");
 
-          var color = $("#table-area").css("display");
-
-          if (color == 'none') {
+          if (tablevisibility == 'none') {
             $("#table-area").css("display", "block" );
           } else {
             $("#table-area").css("display", "none");
           }
-          
-  
-          var items = [];
 
-          $.each( data, function( key, val ) {
-            items.push( "<tr>" );
-            items.push( "<td>" + val.title +  "</td>" );
-            items.push( "<td>" + val.description + "</td>" );
-            items.push( "<td>" + val.siteName + "</td>" );
-            items.push( "</tr>" );
-          });
 
-          $("#table-area tbody").append(items);
-
+        $('#example').dataTable( {
+           "ajax": {
+              "url": "http://localhost:8000/urlparser/getdata",
+              "dataSrc": ""
+           },
+           "columns": [
+              { "data": "title" },
+              { "data": "description" },
+              { "data": "siteName" },
+              { "data": "url" },
+           ]
         });
-     
+    
       });
-
 
 
       $("#parse-url-btn").click(function() {
 
-
           var inputUrl = $("#basic-url").val();
+          var isUrlValid = /^(ftp|http|https):\/\/[^ "]+$/.test(inputUrl);
 
-
-          if (!inputUrl) {
-            alert("You must enter URL address.");
+          if (!inputUrl || !isUrlValid) {
+            alert("You must enter valid URL address.");
           } else {
 
             $.ajax({
